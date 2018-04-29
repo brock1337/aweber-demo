@@ -43,19 +43,19 @@
       pushNotification: () => {
         console.log('\n*** Sending Push Notification ***');
   
-        // if ('Notification' in window) {
-        //   Notification.requestPermission(result => {
-        //     console.log('Notification Permission: ', result);
-        //
-        //     if (result !== 'granted') {
-        //       console.log('No Notification permission granted');
-        //     } else {
-        //       this.displayConfirmNotification();
-        //     }
-        //   });
-        // } else {
-        //   console.log('Notification was not found in window');
-        // }
+        if ('Notification' in window) {
+          Notification.requestPermission(result => {
+            console.log('Notification Permission: ', result);
+
+            if (result !== 'granted') {
+              console.log('No Notification permission granted');
+            } else {
+              this.displayConfirmNotification();
+            }
+          });
+        } else {
+          console.log('Notification was not found in window');
+        }
       },
       displayConfirmNotification () {
         if ('serviceWorker' in navigator) {
